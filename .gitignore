@@ -1,0 +1,18 @@
+#### BUILD
+bin/
+obj/
+out/
+
+#### PACKAGES
+/packages/
+
+#### CONFIG 
+appsettings.Development.json
+
+#### IDE CACHES 
+.idea/
+.vs/
+*.suo
+*.user
+/_ReSharper.Caches/
+
