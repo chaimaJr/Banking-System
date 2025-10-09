@@ -13,6 +13,12 @@ namespace AccountService.Repositories
             _context = context;
         }
 
+        public async Task<bool> AccountExists(int accountId, string userId)
+        {
+            return await _context.Accounts
+                .AnyAsync(a => a.Id == accountId && a.UserId == userId);
+        }
+
         public async Task<IEnumerable<Account>> GetAccountList()
         {
             return await _context.Accounts
@@ -46,9 +52,6 @@ namespace AccountService.Repositories
 
         public async Task<Account> CreateAccount(Account account)
         {
-            account.CreatedAt = DateTime.UtcNow;
-            account.IsActive = true;
-
             await _context.Accounts.AddAsync(account);
             await _context.SaveChangesAsync();
             return account;
@@ -61,22 +64,21 @@ namespace AccountService.Repositories
 
             existingAccount.Balance = account.Balance;
             existingAccount.AccountType = account.AccountType;
-            existingAccount.IsActive = account.IsActive;
 
             await _context.SaveChangesAsync();
             return existingAccount;
         }
 
-        public async Task<Account?> ToggleAccountStatus(int accountId)
+        public async Task<bool> ToggleAccountStatus(int accountId)
         {
             var account = await _context.Accounts.FindAsync(accountId);
-            if (account == null) return null;
+            if (account == null) return false;
 
             account.IsActive = !account.IsActive; 
             
             await _context.SaveChangesAsync();
 
-            return account;
+            return true;
         }
 
         //public async Task<bool?> DeleteAccount(int id)
@@ -102,5 +104,10 @@ namespace AccountService.Repositories
             return await _context.Accounts
                 .AnyAsync(a => a.Id == accountId && a.UserId == userId);
         }
+
+
+        public DbContext GetDbContext() => _context; 
+
+
     }
 }

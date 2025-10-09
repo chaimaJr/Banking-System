@@ -5,7 +5,7 @@ VisualStudioVersion = 17.14.36429.23
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AuthService", "AuthService\AuthService.csproj", "{6D418E21-4C26-4568-A619-65237250290C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{3F7A0B95-013C-49E1-958E-E242E8F65E23}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Banking.Shared", "Shared\Banking.Shared.csproj", "{3F7A0B95-013C-49E1-958E-E242E8F65E23}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccountService", "AccountService\AccountService.csproj", "{614F7DDF-6AF7-4C9D-B60B-974528AFD400}"
 EndProject

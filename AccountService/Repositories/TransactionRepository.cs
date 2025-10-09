@@ -48,8 +48,6 @@ namespace AccountService.Repositories
 
         public async Task<Transaction> CreateTransaction(Transaction transaction)
         {
-            transaction.Timestamp = DateTime.UtcNow;
-
             _context.Transactions.Add(transaction);
             await _context.SaveChangesAsync();
 

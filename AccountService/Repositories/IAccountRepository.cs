@@ -1,10 +1,10 @@
 ﻿using AccountService.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace AccountService.Repositories
 {
     public interface IAccountRepository
     {
-
         Task<IEnumerable<Account>> GetAccountList();
         Task<Account?> GetAccountById(int id);
         Task<IEnumerable<Account>?> GetAccountsByUserId(string userId);
@@ -14,7 +14,7 @@ namespace AccountService.Repositories
 
         Task<Account> CreateAccount(Account account);
         Task<Account?> UpdateAccount(Account account);
-        Task<Account?> ToggleAccountStatus(int accountId);
+        Task<bool> ToggleAccountStatus(int accountId);
         //Task<bool?> DeleteAccount(int id);
 
         // ____________________________________________
@@ -23,7 +23,8 @@ namespace AccountService.Repositories
 
         // ____________________________________________
 
-        Task<bool> AccountExistsAsync(int accountId, string userId);
+        Task<bool> AccountExists(int accountId, string userId);
+        DbContext GetDbContext();
 
     }
 }
